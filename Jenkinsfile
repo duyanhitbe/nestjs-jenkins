@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    sh 'npm run start:prod'
+                    sh 'pm2 start ecosystem.config.js'
                 }
             }
         }
