@@ -37,7 +37,6 @@ pipeline {
             }
         }
 
-        stages {
         stage('Send Message to Discord') {
             steps {
                 script {
@@ -55,6 +54,5 @@ pipeline {
                 }
             }
         }
-    }
     }
 }
