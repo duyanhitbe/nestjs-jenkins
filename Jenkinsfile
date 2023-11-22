@@ -2,33 +2,38 @@ pipeline {
     agent any
 
     tools {
-        nodejs = "Node18"
+        nodejs "Node18"
     }
 
     stages {
-        stage('Clone source') {
+        stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/duyanhitbe/nestjs-jenkins.git'
-            } 
-        }
-        stage('Install dependencies') {
-            steps {
-                sh 'yarn'
+                checkout scm
             }
         }
+
         stage('Build') {
             steps {
-                sh 'yarn build'
+                script {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
+
         stage('Test') {
             steps {
-                sh 'yarn test'
+                script {
+                    sh 'npm run test'
+                }
             }
         }
-        stage('Run') {
+
+        stage('Deploy') {
             steps {
-                sh 'yarn start:prod'
+                script {
+                    sh 'npm run start:prod'
+                }
             }
         }
     }
