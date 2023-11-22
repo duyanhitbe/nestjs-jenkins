@@ -36,5 +36,25 @@ pipeline {
                 }
             }
         }
+
+        stages {
+        stage('Send Message to Discord') {
+            steps {
+                script {
+                    def discordWebhookUrl = 'https://discord.com/api/webhooks/1176785706698408008/kDnI6Sj1ixV3Gcc8nHzThSsTcUzRHLhGGBOCIVtQMOQ0ddSWkkpvZrcfGtC9hpkXJRTY'
+
+                    def message = """
+                        {
+                            "content": "Hello, this is a message from Jenkins!"
+                        }
+                    """
+
+                    sh """
+                        curl -X POST -H "Content-Type: application/json" -d '${message}' ${discordWebhookUrl}
+                    """
+                }
+            }
+        }
+    }
     }
 }
