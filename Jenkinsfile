@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        Node18 = 'Node18'
+        Node18 = "Node18"
     }
 
     stages {
