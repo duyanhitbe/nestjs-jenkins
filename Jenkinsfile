@@ -1,11 +1,7 @@
 pipeline {
     agent any
-    
-    environment {
-        NODEJS_VERSION = '14.17.0'  // Update with your desired Node.js version
-    }
 
-    tool {
+    tools {
         Node18 = 'Node18'
     }
 
