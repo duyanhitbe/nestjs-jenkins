@@ -7,17 +7,17 @@ pipeline {
     stages {
         stage("Installation") {
             steps {
-                pnpm install
+                sh 'pnpm install'
             }
         }
         stage("Build") {
             steps {
-                pnpm build
+                sh 'pnpm build'
             }
         }
         stage("Unit test") {
             steps {
-                pnpm test
+                sh 'pnpm test'
             }
         }
     }
