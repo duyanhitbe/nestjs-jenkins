@@ -20,5 +20,10 @@ pipeline {
                 sh 'pnpm test'
             }
         }
+        stage("E2E test") {
+            steps {
+                sh 'pnpm test:e2e'
+            }
+        }
     }
 }
